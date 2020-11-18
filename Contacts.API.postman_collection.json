@@ -1,0 +1,159 @@
+{
+	"info": {
+		"_postman_id": "36abc9f2-5dd1-4908-8568-f1546cb65728",
+		"name": "Contacts.API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:58178/api/contacts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:58178/api/contacts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "58178",
+					"path": [
+						"api",
+						"contacts"
+					]
+				},
+				"description": "Gets all contacts"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:58178/api/contacts/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:58178/api/contacts/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "58178",
+					"path": [
+						"api",
+						"contacts",
+						"1"
+					]
+				},
+				"description": "Gets specific contact by contactId. Replace {id} with contactId number."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:58178/api/contacts/search/{searchvalue}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:58178/api/contacts/search/family",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "58178",
+					"path": [
+						"api",
+						"contacts",
+						"search",
+						"family"
+					]
+				},
+				"description": "Gets all the contacts that match firstName, lastName or tagName with searchvalue. Replace {searchvalue} with search string."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:58178/api/contacts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"firstName\": \"91Crazy 8\",\r\n        \"lastName\": \"9J1oe 8\",\r\n        \"address\": \"9So1mewhere 8\",\r\n        \"phoneNumber\": [\r\n            \"098/37769777\",\r\n            \"098/37677979\"\r\n        ],\r\n        \"email\": [\r\n            \"9so7meone777@do1t.com\",\r\n            \"9some7one999@do1t.com\"\r\n        ],\r\n         \"tagName\": \"friends\"\r\n\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:58178/api/contacts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "58178",
+					"path": [
+						"api",
+						"contacts"
+					]
+				},
+				"description": "Creates new contact"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:58178/api/contacts/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"id\": 4,\r\n        \"address\": \"Somewhere 9\",\r\n        \"phoneNumber\": [\"892384234\"],\r\n        \"email\": [\"fromput@put.com\"],\r\n        \"tagName\": \"friends\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:58178/api/contacts/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "58178",
+					"path": [
+						"api",
+						"contacts",
+						"4"
+					]
+				},
+				"description": "Updates contact with specific contactId. Replace {id} with contactId number."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:58178/api/contacts/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:58178/api/contacts/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "58178",
+					"path": [
+						"api",
+						"contacts",
+						"9"
+					]
+				},
+				"description": "Deletes specific contact by contactId. Replace {id} with contactId number."
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
