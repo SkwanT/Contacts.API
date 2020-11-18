@@ -50,6 +50,7 @@ namespace Contacts.API
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new ContactMappingProfile());
+                cfg.ForAllMaps((obj, cnfg) => cnfg.ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null)));
             });
 
             container.RegisterInstance(config.CreateMapper());
