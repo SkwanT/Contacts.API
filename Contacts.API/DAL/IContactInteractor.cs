@@ -6,7 +6,6 @@ namespace Contacts.API.DAL
 {
     public interface IContactInteractor : IGenericPrepare<Email>, IGenericPrepare<PhoneNumber>
     {
-
     }
 
     public interface IGenericPrepare<T> where T : class

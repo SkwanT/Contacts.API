@@ -8,16 +8,15 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-
 namespace Contacts.API.Controllers
 {
-    //   [EnableCors(origins: "http://localhost:8080", headers: "*", methods: "*")]
     [RoutePrefix("api/contacts")]
     public class ContactsController : ApiController
     {
         private readonly IContactRepository _repository;
         private readonly IMapper _mapper;
         private readonly IContactInteractor _interactor;
+
         public ContactsController(IContactRepository repository, IMapper mapper, IContactInteractor interactor)
         {
             _repository = repository;
@@ -30,7 +29,6 @@ namespace Contacts.API.Controllers
         {
             try
             {
-
                 var result = await _repository.GetAllContactsAsync(searchValue);
 
                 var mappedResult = _mapper.Map<IEnumerable<ContactModel>>(result);
@@ -111,7 +109,6 @@ namespace Contacts.API.Controllers
 
                         return CreatedAtRoute("GetContact", new { contact = newModel.ID }, newModel);
                     }
-
                 }
             }
             catch (Exception ex)
@@ -120,9 +117,7 @@ namespace Contacts.API.Controllers
             }
 
             return BadRequest();
-
         }
-
 
         [Route("{id}")]
         public async Task<IHttpActionResult> Put(int id, ContactModel model)
@@ -139,27 +134,22 @@ namespace Contacts.API.Controllers
                     contact.PhoneNumbers = _interactor.PrepareList(contact.PhoneNumbers, model);
                     contact.Emails = _interactor.PrepareList(contact.Emails, model);
 
-
                     if (!string.IsNullOrEmpty(model.TagName))
                     {
                         var tagname = await _repository.GetTagName(model.TagName);
 
                         contact.TagName = tagname;
                         contact.TagNameID = tagname.ID;
-
                     }
-
 
                     if (await _repository.SaveChangesAsync())
                     {
-
                         return Ok(_mapper.Map<ContactModel>(contact));
                     }
                     else
                     {
                         return InternalServerError();
                     }
-
                 }
             }
             catch (Exception ex)
@@ -168,7 +158,6 @@ namespace Contacts.API.Controllers
             }
 
             return BadRequest(ModelState);
-
         }
 
         [Route("{id}")]
@@ -190,15 +179,11 @@ namespace Contacts.API.Controllers
                 {
                     return InternalServerError();
                 }
-
             }
             catch (Exception ex)
             {
-
                 return InternalServerError(ex);
             }
-
         }
-
     }
 }

@@ -11,6 +11,7 @@ namespace Contacts.API
     public static class UnityConfig
     {
         #region Unity Container
+
         private static Lazy<IUnityContainer> container =
           new Lazy<IUnityContainer>(() =>
           {
@@ -23,7 +24,8 @@ namespace Contacts.API
         /// Configured Unity Container.
         /// </summary>
         public static IUnityContainer Container => container.Value;
-        #endregion
+
+        #endregion Unity Container
 
         /// <summary>
         /// Registers the type mappings with the Unity container.
@@ -37,13 +39,6 @@ namespace Contacts.API
         /// </remarks>
         public static void RegisterTypes(IUnityContainer container)
         {
-            // NOTE: To load from web.config uncomment the line below.
-            // Make sure to add a Unity.Configuration to the using statements.
-            // container.LoadConfiguration();
-
-            // TODO: Register your type's mappings here.
-
-            //container.RegisterType<IContactRepository, ContactRepository>();
             container.RegisterType<IContactRepository, ContactRepository>(TypeLifetime.Singleton);
             container.RegisterType<IContactInteractor, ContactInteractor>();
 

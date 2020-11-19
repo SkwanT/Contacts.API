@@ -12,19 +12,15 @@ namespace Contacts.API.DAL
         public ContactInteractor(IContactRepository repository)
         {
             _repository = repository;
-
         }
-
 
         public ICollection<PhoneNumber> PrepareList(ICollection<PhoneNumber> phonenumberlist, ContactModel model)
         {
             while (phonenumberlist.ToList().Count() < model.PhoneNumbers.Length)
                 phonenumberlist.Add(new PhoneNumber());
 
-
             while (phonenumberlist.ToList().Count() > model.PhoneNumbers.Length)
                 _repository.DeletePhoneNumber(phonenumberlist.LastOrDefault());
-
 
             int i = 0;
             foreach (var item in phonenumberlist)
@@ -51,10 +47,5 @@ namespace Contacts.API.DAL
 
             return emaillist;
         }
-
-
-
-
-
     }
 }

@@ -25,8 +25,6 @@ namespace Contacts.API.DAL
 
         bool DeleteEmail(Email email);
 
-
-
         Task<bool> SaveChangesAsync();
     }
 }

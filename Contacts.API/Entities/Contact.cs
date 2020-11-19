@@ -5,16 +5,17 @@ namespace Contacts.API.Entities
 {
     public class Contact
     {
-
         public int ID { get; set; }
+
         [Required]
         [StringLength(128)]
         public string FirstName { get; set; }
+
         [Required]
         [StringLength(128)]
         public string LastName { get; set; }
-        [StringLength(128)]
 
+        [StringLength(128)]
         public string Street { get; set; }
 
         [StringLength(128)]
@@ -25,8 +26,5 @@ namespace Contacts.API.Entities
 
         public int? TagNameID { get; set; }
         public virtual TagName TagName { get; set; }
-
-
-
     }
 }
